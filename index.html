@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Score. — Reseller Profit Tracker</title>
+    <title>Score. — Reseller Profit Tracking Infrastructure</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -17,81 +17,156 @@
         <nav>
             <div class="logo">Score<span>.</span></div>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="privacy.html">Privacy</a>
+                <a href="#infrastructure">Infrastructure</a>
+                <a href="#partners">Partners</a>
+                <a href="#pricing">Licensing</a>
                 <a href="support.html">Support</a>
             </div>
         </nav>
 
         <header class="hero">
-            <h1>Your finances,<br>private by design<span>.</span></h1>
-            <p>Score. is the ultra-fast, zero-knowledge profit tracker for resellers. Stored on your device. Synced via iCloud.</p>
-            <a href="#" class="app-store-badge">
-                <i class="fab fa-apple" style="font-size: 1.5rem; margin-right: 10px;"></i>
-                <span>Download on the App Store</span>
-            </a>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                System Status: Operational
+            </div>
+            <h1>The Profit Tracking Infrastructure<span>.</span></h1>
+            <p>Score. delivers ultra-high-fidelity financial intelligence for professional resellers. Built on zero-knowledge encryption and iCloud-native architecture.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem;">
+                <a href="#" class="app-store-badge">
+                    <i class="fab fa-apple" style="font-size: 1.5rem; margin-right: 10px;"></i>
+                    <span>App Store</span>
+                </a>
+                <a href="#pricing" class="btn btn-outline" style="width: auto; padding: 0.8rem 2rem; margin-top: 2rem;">Explore Plans</a>
+            </div>
         </header>
 
-        <section id="features" style="padding: 4rem 0;">
-            <div class="pricing-grid">
+        <section id="infrastructure" style="padding: 6rem 0;">
+            <span class="section-label">Enterprise-Grade Performance</span>
+            <h2 style="margin-bottom: 3rem;">Engineered for Scale<span>.</span></h2>
+            
+            <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="glass-card">
-                    <i class="fas fa-shield-halved" style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
-                    <h3>Zero-Knowledge</h3>
-                    <p style="color: var(--text-secondary);">We never see your financial data. Everything is encrypted and stored in your private iCloud container.</p>
+                    <i class="fas fa-microchip" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                    <h4>Native Optimization</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Coded in Swift 6 for maximum CPU efficiency and buttery 120Hz response times.</p>
                 </div>
                 <div class="glass-card">
-                    <i class="fas fa-bolt" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1.5rem;"></i>
-                    <h3>Native Speed</h3>
-                    <p style="color: var(--text-secondary);">Built with SwiftUI for fluid 120Hz interactions. No lag, no loading spinners, just pure momentum.</p>
+                    <i class="fas fa-cloud-lock" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                    <h4>iCloud Sync v3</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Seamless multi-device synchronization using Apple's private CloudKit infrastructure.</p>
+                </div>
+                <div class="glass-card">
+                    <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--gold); margin-bottom: 1rem;"></i>
+                    <h4>Market Alpha</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Sophisticated financial modeling to identify "Trapped Capital" and "House Money" opportunities.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="partners" class="glass-card" style="margin: 4rem 0; border-color: rgba(96, 165, 250, 0.3);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div>
+                    <span class="section-label" style="color: var(--secondary);">Global Partner Network</span>
+                    <h2>Partner with Score<span>.</span></h2>
+                    <p style="color: var(--text-secondary);">Join our world-class affiliate program or integrate our financial API into your existing reseller tools. We help professional networks grow.</p>
+                    <a href="mailto:partners@scoreapp.pro" class="btn btn-primary" style="width: auto; padding: 0.8rem 2rem; margin-top: 1rem;">Apply for Partnership</a>
+                </div>
+                <div style="text-align: right; opacity: 0.4;">
+                    <i class="fas fa-globe-americas" style="font-size: 10rem; color: var(--secondary);"></i>
                 </div>
             </div>
         </section>
 
         <section id="pricing" class="pricing-section">
-            <h2 style="text-align: center; margin-bottom: 1rem;">Simple Pricing<span>.</span></h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 4rem;">Choose the tier that fits your hustle.</p>
-
+            <h2 style="text-align: center; margin-bottom: 1rem;">License Selection<span>.</span></h2>
             <div class="pricing-grid">
-                <!-- Free Tier -->
                 <div class="glass-card">
-                    <div class="tier-badge">Casual</div>
+                    <div class="tier-badge">Casual Entry</div>
                     <h3>Free</h3>
                     <div class="price">$0<span>/forever</span></div>
                     <ul class="features">
                         <li><i></i> Track up to 25 active items</li>
-                        <li><i></i> Basic profit analytics</li>
-                        <li><i></i> iCloud synchronization</li>
-                        <li><i></i> Single marketplace support</li>
+                        <li><i></i> Standard Analytics Suite</li>
+                        <li><i></i> Global iCloud Synchronization</li>
+                        <li><i></i> Priority Email Support</li>
                     </ul>
-                    <a href="#" class="btn btn-outline">Start for Free</a>
+                    <a href="#" class="btn btn-outline">Begin Now</a>
                 </div>
 
-                <!-- Pro Tier -->
                 <div class="glass-card" style="border-color: rgba(52, 211, 153, 0.3);">
                     <div class="tier-badge badge-pro">Serious Side Hustle</div>
                     <h3>Pro</h3>
                     <div class="price">$9.99<span>/month</span></div>
                     <ul class="features">
-                        <li><i></i> Unlimited inventory tracking</li>
-                        <li><i></i> Advanced "Momentum" analytics</li>
-                        <li><i></i> Custom marketplace fees</li>
-                        <li><i></i> CSV export for tax season</li>
-                        <li><i></i> Early access to new features</li>
+                        <li><i></i> Unlimited Inventory Capacity</li>
+                        <li><i></i> Advanced Momentum Intelligence</li>
+                        <li><i></i> Automated Marketplace Fee Mapping</li>
+                        <li><i></i> Tax-Loss Harvesting Reports</li>
+                        <li><i></i> VIP Concierge Support</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Go Pro</a>
+                    <a href="#" class="btn btn-primary">Select Pro</a>
                 </div>
             </div>
         </section>
 
-        <footer>
-            <p>© 2026 Score. All rights reserved.</p>
-            <div style="margin-top: 1rem;">
-                <a href="privacy.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Privacy Policy</a>
-                <a href="support.html" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">Support</a>
-                <a href="#" style="color: var(--text-secondary); text-decoration: none; margin: 0 1rem;">EULA</a>
+        <section id="faq" style="padding: 6rem 0;">
+            <h2 style="text-align: center;">Common Inquiries<span>.</span></h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>How secure is my financial data?</h4>
+                    <p>Score. uses on-device encryption. We have zero access to your database. Your data is stored in your private iCloud container, accessible only by you.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Is there a desktop version?</h4>
+                    <p>Score. is designed as a mobile-first native experience for iPhone and iPad, ensuring you have financial intelligence everywhere you source.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I export my data for taxes?</h4>
+                    <p>Yes. Pro users can generate standardized CSV and PDF reports compatible with most major accounting software and tax professionals.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Do you offer team licenses?</h4>
+                    <p>For organizations with multiple users, please reach out to our partners team at partners@scoreapp.pro for tailored enterprise solutions.</p>
+                </div>
             </div>
-            <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">Apple, the Apple logo, iPhone, and iCloud are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
+        </section>
+
+        <div class="newsletter-box">
+            <h2>Market Intelligence<span>.</span></h2>
+            <p style="color: var(--text-secondary);">Join 5,000+ professional resellers for weekly insights on sourcing trends and app updates.</p>
+            <div class="input-group">
+                <input type="email" placeholder="professional@email.com">
+                <button class="btn btn-primary" style="width: auto;">Subscribe</button>
+            </div>
+        </div>
+
+        <footer>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); text-align: left; gap: 2rem; margin-bottom: 4rem;">
+                <div>
+                    <div class="logo">Score<span>.</span></div>
+                    <p style="font-size: 0.8rem;">Professional profit tracking for the modern reseller.</p>
+                </div>
+                <div>
+                    <h5>Product</h5>
+                    <a href="#infrastructure" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem;">Infrastructure</a>
+                    <a href="#pricing" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem;">Licensing</a>
+                    <a href="https://score-unified-site.vercel.app/status" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem;">Network Status</a>
+                </div>
+                <div>
+                    <h5>Company</h5>
+                    <a href="support.html" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem;">Support Center</a>
+                    <a href="mailto:partners@scoreapp.pro" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem;">Partnerships</a>
+                    <a href="mailto:press@scoreapp.pro" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem;">Media Relations</a>
+                </div>
+                <div>
+                    <h5>Legal</h5>
+                    <a href="privacy.html" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem;">Privacy Policy</a>
+                    <a href="#" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem;">Terms of Service</a>
+                    <a href="#" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem;">EULA</a>
+                </div>
+            </div>
+            <p>© 2026 Score. All rights reserved.</p>
+            <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.4;">Score. is a trademark of Score Financial Systems. Apple, iPhone, and iCloud are registered trademarks of Apple Inc.</p>
         </footer>
     </div>
 </body>
