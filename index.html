@@ -1,151 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Score. — Professional Profit Tracker</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Score. — Reseller Profit Tracker</title>
+  <meta name="description" content="The reseller toolkit built for flippers who care about margins. Track inventory, sourcing trips, and profit — free to start." />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --primary: #1a2e4a;
+      --accent: #3b82f6;
+      --success: #10b981;
+      --muted: #6b8099;
+      --border: #e8ecf0;
+      --bg-light: #f7f9fb;
+      --bg-lighter: #f0f4f8;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+      background: linear-gradient(to bottom, #ffffff, rgba(59, 130, 246, 0.05));
+      color: #2c4a6e;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    header {
+      padding: 3rem 0;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+    .logo-dot {
+      color: var(--accent);
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .pricing-section {
+      padding: 4rem 0;
+    }
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .pricing-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .pricing-toggle {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .toggle-btn {
+      padding: 0.5rem 1.25rem;
+      border: 2px solid var(--border);
+      background: white;
+      color: var(--primary);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .toggle-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 720px;
+      margin: 0 auto 3rem;
+    }
+    @media (max-width: 600px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .pricing-card.popular {
+      transform: none;
+    }
+    @media (min-width: 900px) {
+      .pricing-card.popular {
+        transform: scale(1.03);
+      }
+    }
+    .pricing-card {
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      background: white;
+      transition: all 0.3s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+    }
+    .pricing-card.popular {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(59, 130, 246, 0.02));
+    }
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .card-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    .card-name-bang {
+      color: var(--accent);
+    }
+    .card-tagline {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .card-price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    .card-period {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .card-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+    .card-features li {
+      padding: 0.5rem 0;
+      color: #2c4a6e;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card-features li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: bold;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .card-cta {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
+    .card-cta:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+    }
+    .card-cta.secondary {
+      background: var(--bg-lighter);
+      color: var(--primary);
+      border: 1px solid var(--border);
+    }
+    .card-cta.secondary:hover {
+      background: var(--border);
+    }
+    .footer-cta {
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer-cta p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(26, 46, 74, 0.3);
+      transition: border-color 0.2s;
+    }
+    footer a:hover {
+      border-bottom-color: var(--primary);
+    }
+    .divider {
+      width: 2rem;
+      height: 2px;
+      background: var(--accent);
+      margin: 0 auto;
+    }
+  </style>
 </head>
 <body>
-    <div class="mesh-bg"></div>
-
+  <header>
     <div class="container">
-        <nav>
-            <div class="logo">Score<span>.</span></div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="privacy.html">Privacy</a>
-                <a href="support.html">Support</a>
-            </div>
-        </nav>
+      <div class="logo">
+        Score<span class="logo-dot">.</span>
+      </div>
+      <h1>Know Your Numbers. Keep Your Profit.</h1>
+      <p class="subtitle">The reseller toolkit built for flippers who care about margins — not just volume.</p>
+    </div>
+  </header>
 
-        <header class="hero">
-            <div class="status-badge">
-                <div class="status-dot"></div>
-                System Status: Operational
-            </div>
-            <h1>Profit tracking for the serious reseller<span>.</span></h1>
-            <p>A native, zero-knowledge financial tool designed for momentum. Your data stays on your device, synced privately via iCloud.</p>
-            <div style="display: flex; justify-content: center; gap: 1rem;">
-                <a href="#" class="app-store-badge">
-                    <i class="fab fa-apple" style="font-size: 1.5rem; margin-right: 10px;"></i>
-                    <span>App Store</span>
-                </a>
-            </div>
-        </header>
+  <main class="container">
+    <section class="pricing-section">
+      <div class="pricing-header">
+        <h2>Choose Your Plan</h2>
+        <p>Start free. Upgrade when you're ready.</p>
+        <div class="pricing-toggle">
+          <button class="toggle-btn active" onclick="setPeriod('yearly', event)">Yearly</button>
+          <button class="toggle-btn" onclick="setPeriod('monthly', event)">Monthly</button>
+          <button class="toggle-btn" onclick="setPeriod('lifetime', event)">Lifetime</button>
+        </div>
+      </div>
 
-        <section id="features" style="padding: 4rem 0;">
-            <span class="section-label">Engineering Standards</span>
-            <h2 style="margin-bottom: 3rem;">Built for performance<span>.</span></h2>
-            
-            <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <div class="glass-card">
-                    <i class="fas fa-microchip" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                    <h4>Swift Native</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Optimized for iOS 18+ with 120Hz fluid interactions and minimal battery impact.</p>
-                </div>
-                <div class="glass-card">
-                    <i class="fas fa-cloud-lock" style="font-size: 2rem; color: var(--secondary); margin-bottom: 1rem;"></i>
-                    <h4>Private Sync</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Uses your own iCloud account for synchronization. We never see or store your data.</p>
-                </div>
-                <div class="glass-card">
-                    <i class="fas fa-chart-line" style="font-size: 2rem; color: var(--gold); margin-bottom: 1rem;"></i>
-                    <h4>Financial Logic</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Sophisticated tracking for trapped capital, house money, and zero-cost inventory.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="pricing" class="pricing-section">
-            <h2 style="text-align: center; margin-bottom: 1rem;">Pricing<span>.</span></h2>
-            <div class="pricing-grid">
-                <div class="glass-card">
-                    <div class="tier-badge">Casual</div>
-                    <h3>Free</h3>
-                    <div class="price">$0<span>/forever</span></div>
-                    <ul class="features">
-                        <li><i></i> Track up to 25 active items</li>
-                        <li><i></i> Standard Analytics Suite</li>
-                        <li><i></i> iCloud Synchronization</li>
-                        <li><i></i> Email Support</li>
-                    </ul>
-                    <a href="#" class="btn btn-outline">Get Started</a>
-                </div>
-
-                <div class="glass-card" style="border-color: rgba(52, 211, 153, 0.3);">
-                    <div class="tier-badge badge-pro">Serious Side Hustle</div>
-                    <h3>Pro</h3>
-                    <div class="price">$9.99<span>/month</span></div>
-                    <ul class="features">
-                        <li><i></i> Unlimited Inventory Capacity</li>
-                        <li><i></i> Advanced Momentum Intelligence</li>
-                        <li><i></i> Custom Marketplace Fee Mapping</li>
-                        <li><i></i> Tax-Season CSV Exports</li>
-                        <li><i></i> Priority Support</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Go Pro</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" style="padding: 6rem 0;">
-            <h2 style="text-align: center;">Common Inquiries<span>.</span></h2>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h4>How secure is my data?</h4>
-                    <p>Score. uses on-device encryption. Your data is stored in your private iCloud container, accessible only by you. We have no backend servers storing your financial records.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Is there a desktop version?</h4>
-                    <p>Score. is currently available for iPhone and iPad, providing a native experience wherever you source inventory.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Can I export my data?</h4>
-                    <p>Yes. Pro users can export their entire inventory and sales history to CSV format for accounting and tax purposes.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>How do I get help?</h4>
-                    <p>Reach out to us at support@scoreapp.pro. We aim to respond to all inquiries within one business day.</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="newsletter-box" style="padding: 3rem;">
-            <h2>Stay updated<span>.</span></h2>
-            <p style="color: var(--text-secondary);">Join our mailing list for the latest features and sourcing insights.</p>
-            <div class="input-group">
-                <input type="email" placeholder="email@address.com">
-                <button class="btn btn-primary" style="width: auto;">Subscribe</button>
-            </div>
+      <div class="pricing-grid">
+        <!-- Free Plan -->
+        <div class="pricing-card">
+          <h3 class="card-name">Score<span class="card-name-bang">.</span></h3>
+          <p class="card-tagline">Get started for free</p>
+          <div class="card-price">Free</div>
+          <p class="card-period">Forever</p>
+          <ul class="card-features">
+            <li>Track up to 50 items</li>
+            <li>1 profit chart</li>
+            <li>Unlimited sourcing trips</li>
+            <li>iCloud sync (private — never shared)</li>
+            <li>Watch app companion</li>
+            <li>Expense &amp; mileage tracking</li>
+          </ul>
+          <button class="card-cta secondary" onclick="downloadApp()">Download Free</button>
         </div>
 
-        <footer>
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4rem; opacity: 0.8;">
-                <div>
-                    <div class="logo">Score<span>.</span></div>
-                    <p style="font-size: 0.8rem; color: var(--text-secondary);">Built for resellers, by resellers.</p>
-                </div>
-                <div style="display: flex; gap: 4rem;">
-                    <div>
-                        <h5 style="margin-bottom: 1rem;">Support</h5>
-                        <a href="support.html" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.9rem;">Contact</a>
-                        <a href="mailto:partners@scoreapp.pro" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.9rem;">Partners</a>
-                    </div>
-                    <div>
-                        <h5 style="margin-bottom: 1rem;">Legal</h5>
-                        <a href="privacy.html" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.9rem;">Privacy</a>
-                        <a href="#" style="display: block; color: var(--text-secondary); text-decoration: none; margin-bottom: 0.5rem; font-size: 0.9rem;">EULA</a>
-                    </div>
-                </div>
-            </div>
-            <p style="font-size: 0.85rem;">© 2026 Score. All rights reserved.</p>
-        </footer>
+        <!-- Pro Plan -->
+        <div class="pricing-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <h3 class="card-name">Score<span class="card-name-bang">!</span></h3>
+          <p class="card-tagline">For serious resellers</p>
+          <div class="card-price" id="pro-price">$49.99</div>
+          <p class="card-period" id="pro-period">/year</p>
+          <ul class="card-features">
+            <li>Track up to 2,000 items</li>
+            <li>Full Pro reports &amp; analytics</li>
+            <li>Death Pile tracker (spots inventory aging 30+ days)</li>
+            <li>Market Comps (live eBay + PriceCharting pricing)</li>
+            <li>AI Item Enrichment (auto-fill titles, descriptions, tips)</li>
+            <li>Watch app companion</li>
+            <li>Goals &amp; achievements</li>
+            <li>CSV export</li>
+            <li>Mileage &amp; expense tracking</li>
+            <li>Siri Shortcuts</li>
+          </ul>
+          <button class="card-cta" onclick="downloadApp()">Download &amp; Subscribe</button>
+        </div>
+      </div>
+
+      <div class="footer-cta">
+        <p>All plans include automatic updates and secure iCloud sync.</p>
+        <p><strong>Your data stays on your device. No accounts. Nothing sold.</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Score. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
     </div>
+  </footer>
+
+  <script>
+    function setPeriod(period, event) {
+      document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const prices = {
+        yearly:   { price: '$49.99',  period: '/year' },
+        monthly:  { price: '$7.99',   period: '/month' },
+        lifetime: { price: '$149.99', period: 'one-time' }
+      };
+
+      document.getElementById('pro-price').textContent = prices[period].price;
+      document.getElementById('pro-period').textContent = prices[period].period;
+    }
+
+    function downloadApp() {
+      alert('Score. is coming to the App Store soon.\n\nCheck back here for the download link when it launches.');
+    }
+  </script>
 </body>
 </html>

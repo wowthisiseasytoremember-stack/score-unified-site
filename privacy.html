@@ -1,57 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy — Score.</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Score.</title>
+  <meta name="description" content="Privacy Policy for Score., the reseller profit tracker for iOS" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+      background-color: #ffffff;
+      color: #2c4a6e;
+      line-height: 1.8;
+    }
+    header {
+      border-bottom: 1px solid #e8ecf0;
+      padding: 2.5rem 0 2rem;
+    }
+    .container {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    header .label {
+      font-size: 0.8rem;
+      font-family: system-ui, sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6b8099;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: #1a2e4a;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .date {
+      font-size: 0.875rem;
+      color: #6b8099;
+      font-family: system-ui, sans-serif;
+    }
+    main {
+      padding: 3rem 1.5rem 5rem;
+    }
+    .callout {
+      background-color: #f0f4f8;
+      border-left: 4px solid #1a2e4a;
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .callout strong {
+      color: #1a2e4a;
+    }
+    section {
+      margin-bottom: 2.75rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1a2e4a;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e8ecf0;
+    }
+    p {
+      color: #2c4a6e;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    ul {
+      color: #2c4a6e;
+      line-height: 1.9;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    a {
+      color: #1a2e4a;
+      text-decoration: underline;
+      text-decoration-color: #6b8099;
+    }
+    a:hover {
+      text-decoration-color: #1a2e4a;
+    }
+    .permission-box {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding: 1.25rem;
+      background-color: #f7f9fb;
+      border-radius: 8px;
+    }
+    .permission-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .permission-content h3 {
+      font-weight: 700;
+      color: #1a2e4a;
+      margin: 0 0 0.35rem;
+      font-family: system-ui, sans-serif;
+    }
+    .permission-content p {
+      color: #2c4a6e;
+      line-height: 1.7;
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    .contact-box {
+      background-color: #f0f4f8;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+    .contact-box p {
+      margin: 0 0 0.25rem;
+      font-weight: 700;
+      color: #1a2e4a;
+      font-family: system-ui, sans-serif;
+    }
+    .contact-box a {
+      color: #1a2e4a;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 3rem;
+      border-top: 1px solid #e8ecf0;
+      padding-top: 2rem;
+    }
+    .footer button {
+      background: none;
+      border: 1px solid #1a2e4a;
+      border-radius: 4px;
+      color: #1a2e4a;
+      cursor: pointer;
+      font-family: system-ui, sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 1.25rem;
+      transition: all 0.2s;
+    }
+    .footer button:hover {
+      background-color: #f0f4f8;
+    }
+    .copyright {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: #6b8099;
+      font-family: system-ui, sans-serif;
+    }
+  </style>
 </head>
 <body>
-    <div class="mesh-bg"></div>
-
+  <header>
     <div class="container">
-        <nav>
-            <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Score<span>.</span></a></div>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="support.html">Support</a>
-            </div>
-        </nav>
-
-        <section class="legal-container">
-            <h1 style="font-size: 3rem;">Privacy Policy<span>.</span></h1>
-            <p style="color: var(--text-secondary);">Last updated: March 11, 2026</p>
-
-            <div class="glass-card" style="margin-top: 3rem; background: rgba(52, 211, 153, 0.05); border-color: rgba(52, 211, 153, 0.2);">
-                <p><strong>The short version:</strong> Score. stores all your data privately on your own device and iCloud account. We do not collect, see, or store your financial data on our servers — ever.</p>
-            </div>
-
-            <h2>1. Introduction</h2>
-            <p>Score. ("the App") is a reseller profit tracker developed by Justin. This Privacy Policy describes how the App handles your information. Score. is built on a privacy-first foundation. Your inventory, sales, and financial records are yours — stored on your device and synced privately through your personal iCloud account.</p>
-
-            <h2>2. Data We Do Not Collect</h2>
-            <p>Score. does <strong>not</strong>:</p>
-            <ul>
-                <li>Collect or transmit your inventory, sales, or financial data to any server.</li>
-                <li>Sell your personal information to any third party.</li>
-                <li>Use third-party advertising networks or tracking SDKs.</li>
-                <li>Use third-party analytics services (e.g., Firebase, Mixpanel).</li>
-            </ul>
-
-            <h2>3. Your Data & iCloud / CloudKit</h2>
-            <p>Score. uses Apple's SwiftData framework to store all data locally on your device. Sync across your devices is handled via your personal iCloud account using Apple's CloudKit framework. This means your data is stored in your private iCloud container, not a shared or developer-controlled database.</p>
-
-            <h2>4. Subscriptions & RevenueCat</h2>
-            <p>Score. uses RevenueCat to manage in-app subscriptions and purchases. RevenueCat processes limited purchase-related data (such as purchase tokens) to validate your subscription. RevenueCat does not have access to your inventory, sales, or financial data.</p>
-
-            <h2>5. Contact</h2>
-            <p>If you have any questions or concerns about this Privacy Policy or the way Score. handles your data, please reach out via email at <a href="mailto:support@scoreapp.pro" style="color: var(--primary);">support@scoreapp.pro</a>.</p>
-        </section>
-
-        <footer>
-            <p>© 2026 Score. All rights reserved.</p>
-        </footer>
+      <p class="label">Score. — Reseller Profit Tracker</p>
+      <h1>Privacy Policy</h1>
+      <p class="date">Last updated: March 9, 2026</p>
     </div>
+  </header>
+
+  <main class="container">
+    <div class="callout">
+      <p>
+        <strong>The short version:</strong> Score. stores all your data privately on your own device and iCloud account. We do not collect, see, or store your financial data on our servers — ever.
+      </p>
+    </div>
+
+    <section id="introduction">
+      <h2>1. Introduction</h2>
+      <p>Score. ("the App") is a reseller profit tracker developed by Justin ("I," "me," or "the developer"). This Privacy Policy describes how the App handles your information.</p>
+      <p>Score. is built on a privacy-first foundation. Your inventory, sales, and financial records are yours — stored on your device and synced privately through your personal iCloud account. I have no ability to access this data.</p>
+    </section>
+
+    <section id="no-collection">
+      <h2>2. Data We Do Not Collect</h2>
+      <p>Score. does <strong>not</strong>:</p>
+      <ul>
+        <li>Collect or transmit your inventory, sales, or financial data to any server</li>
+        <li>Sell your personal information to any third party</li>
+        <li>Use third-party advertising networks or tracking SDKs</li>
+        <li>Use third-party analytics services (e.g., Firebase, Mixpanel, Amplitude)</li>
+        <li>Build behavioral profiles or fingerprint your device</li>
+      </ul>
+      <p>We do not run any backend servers that store user financial data.</p>
+    </section>
+
+    <section id="icloud">
+      <h2>3. Your Data & iCloud / CloudKit</h2>
+      <p>Score. uses Apple's <strong>SwiftData</strong> framework to store all data locally on your device. Sync across your devices is handled via your personal <strong>iCloud account</strong> using Apple's <strong>CloudKit</strong> framework.</p>
+      <p>This means:</p>
+      <ul>
+        <li>Your data is stored in your <strong>private iCloud container</strong>, not a shared or developer-controlled database</li>
+        <li>Only you can access your data — I cannot view, access, or retrieve it</li>
+        <li>iCloud sync is governed by <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple's Privacy Policy</a></li>
+        <li>Disabling iCloud sync keeps your data entirely on-device</li>
+      </ul>
+    </section>
+
+    <section id="permissions">
+      <h2>4. Device Permissions</h2>
+      <p>Score. may request the following optional permissions. All are optional and can be denied or revoked at any time in iOS Settings.</p>
+
+      <div class="permission-box">
+        <span class="permission-icon">📷</span>
+        <div class="permission-content">
+          <h3>Camera</h3>
+          <p>Used to capture photos of items in your inventory. Photos are stored locally on your device only and are never uploaded to any server.</p>
+        </div>
+      </div>
+
+      <div class="permission-box">
+        <span class="permission-icon">🎙️</span>
+        <div class="permission-content">
+          <h3>Microphone</h3>
+          <p>Used for optional voice input features (e.g., dictating notes or item details). All audio processing occurs on-device and no audio is recorded, stored, or transmitted.</p>
+        </div>
+      </div>
+
+      <div class="permission-box">
+        <span class="permission-icon">📍</span>
+        <div class="permission-content">
+          <h3>Location</h3>
+          <p>Used in-session to log sourcing trip locations. Location data is used only during the active session and is never stored persistently or transmitted off your device.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="subscriptions">
+      <h2>5. Subscriptions & StoreKit</h2>
+      <p>Score. uses Apple's native <strong>StoreKit 2</strong> to manage in-app subscriptions and purchases. When you purchase a subscription, your purchase data is processed through Apple's systems.</p>
+      <p>All in-app purchases are processed by Apple through the App Store. Score. does not have access to your financial information or payment details.</p>
+    </section>
+
+    <section id="email">
+      <h2>6. Email Communications</h2>
+      <p>If you voluntarily opt in to email updates (for example, via a mailing list or support contact), your email address is collected solely for the purpose of sending those communications.</p>
+      <p>Your email address is never shared with third parties for marketing purposes, is not linked to any data within the app, and you may unsubscribe at any time.</p>
+    </section>
+
+    <section id="children">
+      <h2>7. Children's Privacy</h2>
+      <p>Score. is not directed at children under the age of 13. I do not knowingly collect personal information from children under 13. If you believe a child has provided information through the app, please contact me and I will take appropriate action.</p>
+    </section>
+
+    <section id="changes">
+      <h2>8. Changes to This Policy</h2>
+      <p>I may update this Privacy Policy from time to time. When I do, I will revise the "Last updated" date at the top of this page. For significant changes, I may provide notice through the app or via email (if you have opted in).</p>
+      <p>Continued use of Score. after any changes constitutes your acceptance of the updated policy.</p>
+    </section>
+
+    <section id="contact">
+      <h2>9. Contact</h2>
+      <p>If you have any questions or concerns about this Privacy Policy or the way Score. handles your data, please reach out:</p>
+      <div class="contact-box">
+        <p>Justin</p>
+        <p>Developer, Score. <br /><a href="mailto:support@scoreapp.pro">support@scoreapp.pro</a></p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">↑ Back to top</button>
+      <p class="copyright">© 2026 Score. All rights reserved.</p>
+    </div>
+  </main>
 </body>
 </html>
