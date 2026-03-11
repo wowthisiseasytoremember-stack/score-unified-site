@@ -13,164 +13,431 @@
     }
     :root {
       --primary: #1a2e4a;
+      --primary-light: #2a4a6e;
       --accent: #3b82f6;
+      --accent-dark: #2563eb;
+      --accent-glow: rgba(59, 130, 246, 0.15);
       --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.12);
       --muted: #6b8099;
-      --border: #e8ecf0;
-      --bg-light: #f7f9fb;
-      --bg-lighter: #f0f4f8;
+      --text: #2c4a6e;
+      --border: #e2e8f0;
+      --bg-light: #f8fafc;
+      --bg-card: #ffffff;
+      --shadow-sm: 0 1px 3px rgba(26, 46, 74, 0.06);
+      --shadow-md: 0 4px 16px rgba(26, 46, 74, 0.08);
+      --shadow-lg: 0 12px 40px rgba(26, 46, 74, 0.12);
+      --shadow-accent: 0 8px 32px rgba(59, 130, 246, 0.18);
+      --radius: 16px;
+      --radius-sm: 10px;
     }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
-      background: linear-gradient(to bottom, #ffffff, rgba(59, 130, 246, 0.05));
-      color: #2c4a6e;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Helvetica Neue", sans-serif;
+      background: #ffffff;
+      color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
     .container {
-      max-width: 1200px;
+      max-width: 1140px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
-    header {
-      padding: 3rem 0;
-      text-align: center;
-      border-bottom: 1px solid var(--border);
+
+    /* ── NAV ── */
+    nav {
+      padding: 1.25rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .logo {
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 1.5rem;
+      font-weight: 800;
       color: var(--primary);
-      margin-bottom: 1rem;
       letter-spacing: -0.5px;
+      text-decoration: none;
     }
     .logo-dot {
       color: var(--accent);
-      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      display: inline-block;
+      animation: dotPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.92); }
+    }
+    .nav-cta {
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover {
+      background: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      padding: 6rem 0 5rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-glow);
+      color: var(--accent-dark);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.375rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(59, 130, 246, 0.15);
+    }
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: dotPulse 2s infinite;
     }
     h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.25rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.65;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.875rem 2rem;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+    .btn-primary:hover {
+      background: var(--accent);
+      box-shadow: var(--shadow-accent);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: var(--bg-light);
+      color: var(--primary);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: #fff;
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── VALUE PROPS ── */
+    .value-props {
+      padding: 5rem 0;
+      background: var(--bg-light);
+      position: relative;
+    }
+    .value-props::before,
+    .value-props::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+    .value-props::before { top: 0; }
+    .value-props::after { bottom: 0; }
+    .section-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.75px;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 3.5rem;
+    }
+    .props-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.75rem;
+    }
+    @media (max-width: 900px) {
+      .props-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 520px) {
+      .props-grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+    }
+    .prop-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .prop-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(59, 130, 246, 0.2);
+    }
+    .prop-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+      line-height: 1;
+    }
+    .prop-icon.blue   { background: var(--accent-glow); color: var(--accent); }
+    .prop-icon.green  { background: var(--success-glow); color: var(--success); }
+    .prop-icon.navy   { background: rgba(26, 46, 74, 0.08); color: var(--primary); }
+    .prop-icon.purple { background: rgba(139, 92, 246, 0.1); color: #7c3aed; }
+    .prop-card h3 {
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 0.5rem;
     }
-    .subtitle {
-      font-size: 1.1rem;
+    .prop-card p {
+      font-size: 0.875rem;
       color: var(--muted);
-      margin-bottom: 2rem;
+      line-height: 1.55;
     }
+
+    /* ── PRICING ── */
     .pricing-section {
-      padding: 4rem 0;
+      padding: 5rem 0 4rem;
     }
-    .pricing-header {
-      text-align: center;
+    .pricing-toggle-wrap {
+      display: flex;
+      justify-content: center;
       margin-bottom: 3rem;
     }
-    .pricing-header h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
     .pricing-toggle {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-bottom: 2rem;
+      display: inline-flex;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px;
+      gap: 4px;
     }
     .toggle-btn {
-      padding: 0.5rem 1.25rem;
-      border: 2px solid var(--border);
-      background: white;
-      color: var(--primary);
-      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      border-radius: 100px;
       cursor: pointer;
       font-weight: 600;
-      transition: all 0.2s;
+      font-size: 0.875rem;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      font-family: inherit;
     }
     .toggle-btn.active {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
+      background: var(--bg-card);
+      color: var(--primary);
+      box-shadow: 0 1px 4px rgba(26, 46, 74, 0.1);
     }
+    .toggle-btn:hover:not(.active) {
+      color: var(--primary);
+    }
+
     .pricing-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
-      max-width: 720px;
+      max-width: 780px;
       margin: 0 auto 3rem;
+      align-items: start;
     }
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .pricing-grid {
         grid-template-columns: 1fr;
-      }
-    }
-    .pricing-card.popular {
-      transform: none;
-    }
-    @media (min-width: 900px) {
-      .pricing-card.popular {
-        transform: scale(1.03);
+        max-width: 400px;
       }
     }
     .pricing-card {
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      background: white;
-      transition: all 0.3s;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem 2rem;
+      background: var(--bg-card);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       display: flex;
       flex-direction: column;
     }
     .pricing-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
     }
     .pricing-card.popular {
       border-color: var(--accent);
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(59, 130, 246, 0.02));
+      background: linear-gradient(180deg, rgba(59, 130, 246, 0.03) 0%, var(--bg-card) 100%);
+      box-shadow: var(--shadow-accent);
+    }
+    @media (min-width: 900px) {
+      .pricing-card.popular {
+        transform: scale(1.04);
+        z-index: 2;
+      }
+      .pricing-card.popular:hover {
+        transform: scale(1.04) translateY(-4px);
+      }
     }
     .popular-badge {
       position: absolute;
-      top: -12px;
-      right: 20px;
-      background: var(--accent);
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       color: white;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
     }
     .card-name {
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.5rem;
+      font-weight: 800;
       color: var(--primary);
       margin-bottom: 0.25rem;
+      letter-spacing: -0.3px;
     }
-    .card-name-bang {
+    .card-name-accent {
       color: var(--accent);
     }
     .card-tagline {
       font-size: 0.9rem;
       color: var(--muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .card-price-wrap {
+      margin-bottom: 2rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
     }
     .card-price {
-      font-size: 2.5rem;
-      font-weight: 700;
+      font-size: 3rem;
+      font-weight: 800;
       color: var(--primary);
-      margin-bottom: 0.25rem;
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+    .card-price .currency {
+      font-size: 1.5rem;
+      font-weight: 700;
+      vertical-align: top;
+      position: relative;
+      top: 0.3rem;
+      margin-right: 2px;
     }
     .card-period {
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       color: var(--muted);
-      margin-bottom: 1.5rem;
+      margin-top: 0.25rem;
     }
     .card-features {
       list-style: none;
@@ -178,96 +445,214 @@
       flex-grow: 1;
     }
     .card-features li {
-      padding: 0.5rem 0;
-      color: #2c4a6e;
-      font-size: 0.95rem;
+      padding: 0.4rem 0;
+      color: var(--text);
+      font-size: 0.9rem;
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      align-items: flex-start;
+      gap: 0.65rem;
+      line-height: 1.45;
     }
-    .card-features li::before {
-      content: "✓";
-      color: var(--success);
-      font-weight: bold;
-      font-size: 1.1rem;
+    .check {
       flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+    .check-default {
+      background: var(--success-glow);
+      color: var(--success);
+    }
+    .check-pro {
+      background: var(--accent-glow);
+      color: var(--accent);
     }
     .card-cta {
-      background: var(--primary);
-      color: white;
+      width: 100%;
+      padding: 0.875rem 1.5rem;
       border: none;
-      border-radius: 8px;
-      padding: 0.75rem 1.5rem;
-      font-weight: 600;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       text-align: center;
       text-decoration: none;
       display: block;
+      font-family: inherit;
     }
-    .card-cta:hover {
-      background: var(--accent);
+    .card-cta.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+    }
+    .card-cta.primary:hover {
+      box-shadow: 0 6px 22px rgba(59, 130, 246, 0.35);
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
     }
     .card-cta.secondary {
-      background: var(--bg-lighter);
+      background: var(--bg-light);
       color: var(--primary);
       border: 1px solid var(--border);
     }
     .card-cta.secondary:hover {
-      background: var(--border);
+      background: var(--bg-card);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
     }
-    .footer-cta {
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
-    }
-    .footer-cta p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-    footer {
+
+    /* ── TRUST STRIP ── */
+    .trust {
       padding: 3rem 0;
       text-align: center;
-      color: var(--muted);
-      font-size: 0.85rem;
       border-top: 1px solid var(--border);
+      background: var(--bg-light);
+    }
+    .trust-items {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .trust-icon {
+      font-size: 1.1rem;
+    }
+    .trust-icon.green { color: var(--success); }
+    .trust-icon.blue  { color: var(--accent); }
+    .trust-icon.navy  { color: var(--primary); }
+
+    /* ── FOOTER NOTE ── */
+    .footer-note {
+      text-align: center;
+      padding: 2.5rem 0;
+    }
+    .footer-note p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .footer-note strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg-light);
     }
     footer a {
       color: var(--primary);
       text-decoration: none;
-      border-bottom: 1px solid rgba(26, 46, 74, 0.3);
-      transition: border-color 0.2s;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(26, 46, 74, 0.25);
+      transition: all 0.2s;
     }
     footer a:hover {
-      border-bottom-color: var(--primary);
+      color: var(--accent);
+      border-bottom-color: var(--accent);
     }
-    .divider {
-      width: 2rem;
-      height: 2px;
-      background: var(--accent);
-      margin: 0 auto;
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
+    .fade-up {
+      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      opacity: 0;
+    }
+    .fade-up-d1 { animation-delay: 0.1s; }
+    .fade-up-d2 { animation-delay: 0.2s; }
+    .fade-up-d3 { animation-delay: 0.3s; }
+    .fade-up-d4 { animation-delay: 0.4s; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">
-        Score<span class="logo-dot">.</span>
-      </div>
-      <h1>Know Your Numbers. Keep Your Profit.</h1>
-      <p class="subtitle">The reseller toolkit built for flippers who care about margins — not just volume.</p>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="pricing-section">
-      <div class="pricing-header">
-        <h2>Choose Your Plan</h2>
-        <p>Start free. Upgrade when you're ready.</p>
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">Score<span class="logo-dot">.</span></div>
+      <button class="nav-cta" onclick="downloadApp()">Get the App</button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge fade-up">
+        <span class="hero-badge-dot"></span>
+        iOS App for Resellers
+      </div>
+      <h1 class="fade-up fade-up-d1">Know Your Numbers.<br>Keep Your Profit.</h1>
+      <p class="subtitle fade-up fade-up-d2">The reseller toolkit built for flippers who care about margins — not just volume.</p>
+      <div class="hero-cta-group fade-up fade-up-d3">
+        <button class="btn btn-primary" onclick="downloadApp()">Download Free</button>
+        <a class="btn btn-secondary" href="#pricing">See Plans</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VALUE PROPS ── -->
+  <section class="value-props">
+    <div class="container">
+      <p class="section-label">Built for the Hustle</p>
+      <h2 class="section-title">Everything you need to flip smarter</h2>
+      <p class="section-subtitle">From garage sale hauls to eBay shipments. Track every dollar in, every dollar out.</p>
+
+      <div class="props-grid">
+        <div class="prop-card fade-up fade-up-d1">
+          <div class="prop-icon blue">$</div>
+          <h3>Profit, Not Guesswork</h3>
+          <p>Real-time profit per item, per trip, per platform. Know your margins before you list.</p>
+        </div>
+        <div class="prop-card fade-up fade-up-d2">
+          <div class="prop-icon green">&#x25CE;</div>
+          <h3>Death Pile Tracker</h3>
+          <p>Spots inventory sitting 30+ days. Stop losing money to items you forgot about.</p>
+        </div>
+        <div class="prop-card fade-up fade-up-d3">
+          <div class="prop-icon navy">&#x229E;</div>
+          <h3>Market Comps</h3>
+          <p>Live eBay and PriceCharting data so you price right the first time.</p>
+        </div>
+        <div class="prop-card fade-up fade-up-d4">
+          <div class="prop-icon purple">&#x2731;</div>
+          <h3>Private by Default</h3>
+          <p>iCloud sync, no accounts, no servers. Your data stays on your device. Period.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRICING ── -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <p class="section-label">Pricing</p>
+      <h2 class="section-title">Start free. Upgrade when you're ready.</h2>
+      <p class="section-subtitle">No trials. No tricks. Free is free.</p>
+
+      <div class="pricing-toggle-wrap">
         <div class="pricing-toggle">
           <button class="toggle-btn active" onclick="setPeriod('yearly', event)">Yearly</button>
           <button class="toggle-btn" onclick="setPeriod('monthly', event)">Monthly</button>
@@ -278,17 +663,19 @@
       <div class="pricing-grid">
         <!-- Free Plan -->
         <div class="pricing-card">
-          <h3 class="card-name">Score<span class="card-name-bang">.</span></h3>
+          <h3 class="card-name">Score<span class="card-name-accent">.</span></h3>
           <p class="card-tagline">Get started for free</p>
-          <div class="card-price">Free</div>
-          <p class="card-period">Forever</p>
+          <div class="card-price-wrap">
+            <div class="card-price">Free</div>
+            <p class="card-period">Forever</p>
+          </div>
           <ul class="card-features">
-            <li>Track up to 50 items</li>
-            <li>1 profit chart</li>
-            <li>Unlimited sourcing trips</li>
-            <li>iCloud sync (private — never shared)</li>
-            <li>Watch app companion</li>
-            <li>Expense &amp; mileage tracking</li>
+            <li><span class="check check-default">&#x2713;</span>Track up to 50 items</li>
+            <li><span class="check check-default">&#x2713;</span>1 profit chart</li>
+            <li><span class="check check-default">&#x2713;</span>Unlimited sourcing trips</li>
+            <li><span class="check check-default">&#x2713;</span>iCloud sync (private — never shared)</li>
+            <li><span class="check check-default">&#x2713;</span>Watch app companion</li>
+            <li><span class="check check-default">&#x2713;</span>Expense &amp; mileage tracking</li>
           </ul>
           <button class="card-cta secondary" onclick="downloadApp()">Download Free</button>
         </div>
@@ -296,57 +683,103 @@
         <!-- Pro Plan -->
         <div class="pricing-card popular">
           <div class="popular-badge">Most Popular</div>
-          <h3 class="card-name">Score<span class="card-name-bang">!</span></h3>
+          <h3 class="card-name">Score<span class="card-name-accent">!</span></h3>
           <p class="card-tagline">For serious resellers</p>
-          <div class="card-price" id="pro-price">$49.99</div>
-          <p class="card-period" id="pro-period">/year</p>
+          <div class="card-price-wrap">
+            <div class="card-price" id="pro-price"><span class="currency">$</span>49.99</div>
+            <p class="card-period" id="pro-period">/year</p>
+          </div>
           <ul class="card-features">
-            <li>Track up to 2,000 items</li>
-            <li>Full Pro reports &amp; analytics</li>
-            <li>Death Pile tracker (spots inventory aging 30+ days)</li>
-            <li>Market Comps (live eBay + PriceCharting pricing)</li>
-            <li>AI Item Enrichment (auto-fill titles, descriptions, tips)</li>
-            <li>Watch app companion</li>
-            <li>Goals &amp; achievements</li>
-            <li>CSV export</li>
-            <li>Mileage &amp; expense tracking</li>
-            <li>Siri Shortcuts</li>
+            <li><span class="check check-pro">&#x2713;</span>Track up to 2,000 items</li>
+            <li><span class="check check-pro">&#x2713;</span>Full Pro reports &amp; analytics</li>
+            <li><span class="check check-pro">&#x2713;</span>Death Pile tracker (spots inventory aging 30+ days)</li>
+            <li><span class="check check-pro">&#x2713;</span>Market Comps (live eBay + PriceCharting pricing)</li>
+            <li><span class="check check-pro">&#x2713;</span>AI Item Enrichment (auto-fill titles, descriptions, tips)</li>
+            <li><span class="check check-pro">&#x2713;</span>Watch app companion</li>
+            <li><span class="check check-pro">&#x2713;</span>Goals &amp; achievements</li>
+            <li><span class="check check-pro">&#x2713;</span>CSV export</li>
+            <li><span class="check check-pro">&#x2713;</span>Mileage &amp; expense tracking</li>
+            <li><span class="check check-pro">&#x2713;</span>Siri Shortcuts</li>
           </ul>
-          <button class="card-cta" onclick="downloadApp()">Download &amp; Subscribe</button>
+          <button class="card-cta primary" onclick="downloadApp()">Download &amp; Subscribe</button>
         </div>
       </div>
 
-      <div class="footer-cta">
+      <div class="footer-note">
         <p>All plans include automatic updates and secure iCloud sync.</p>
         <p><strong>Your data stays on your device. No accounts. Nothing sold.</strong></p>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
+  <!-- ── TRUST STRIP ── -->
+  <section class="trust">
+    <div class="container">
+      <div class="trust-items">
+        <div class="trust-item">
+          <span class="trust-icon green">&#x2713;</span>
+          No account required
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon blue">&#x25CB;</span>
+          iCloud sync only
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon navy">&#x229E;</span>
+          Zero data sold
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon green">&#x2713;</span>
+          Free forever tier
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
   <footer>
     <div class="container">
-      <p>© 2026 Score. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+      <p>&copy; 2026 Score. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
     </div>
   </footer>
 
   <script>
     function setPeriod(period, event) {
-      document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.toggle-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
       event.target.classList.add('active');
 
-      const prices = {
-        yearly:   { price: '$49.99',  period: '/year' },
-        monthly:  { price: '$7.99',   period: '/month' },
-        lifetime: { price: '$149.99', period: 'one-time' }
+      var prices = {
+        yearly:   { display: '<span class="currency">$</span>49.99',  period: '/year' },
+        monthly:  { display: '<span class="currency">$</span>7.99',   period: '/month' },
+        lifetime: { display: '<span class="currency">$</span>149.99', period: 'one-time' }
       };
 
-      document.getElementById('pro-price').textContent = prices[period].price;
+      document.getElementById('pro-price').innerHTML = prices[period].display;
       document.getElementById('pro-period').textContent = prices[period].period;
     }
 
     function downloadApp() {
       alert('Score. is coming to the App Store soon.\n\nCheck back here for the download link when it launches.');
     }
+
+    // Intersection observer for scroll-triggered fade-up
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.prop-card.fade-up').forEach(function(el) {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+      });
+    })();
   </script>
 </body>
 </html>
